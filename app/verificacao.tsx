@@ -6,11 +6,11 @@ export default function VerificacaoEmailScreen() {
   const [codigo, setCodigo] = useState('');
   const router = useRouter();
 
-  const codigoCorreto = '123456'; 
+  const codigoCorreto = '123456'; // Código fixo
 
   const handleVerificar = () => {
     if (codigo === codigoCorreto) {
-      router.push('/perfil');
+      router.push('/cadastro');
     } else {
       Alert.alert('Código incorreto!');
     }

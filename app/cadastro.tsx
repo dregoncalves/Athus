@@ -12,7 +12,8 @@ export default function CadastroScreen() {
   const handleVerificar = () => {
     // Aqui vai a lógica de verificação dos dados
     console.log({ nome, email, senha, repetirSenha });
-    router.push('/verificacao'); 
+
+    router.push('/perfil'); 
   };
 
   return (
