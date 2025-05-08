@@ -1,6 +1,9 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export default function PerfilScreen() {
+  const router = useRouter();
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Perfil</Text>
@@ -14,7 +17,11 @@ export default function PerfilScreen() {
       </View>
 
       <View style={styles.menu}>
-        {['Dados pessoais', 'Endereço', 'Favoritos', 'Dúvidas comuns', 'Configurações', 'Histórico'].map((item, index) => (
+        <TouchableOpacity style={styles.menuItem} onPress={() => router.push('/dados-pessoais')}>
+          <Text style={styles.menuText}>Dados pessoais</Text>
+        </TouchableOpacity>
+
+        {['Endereço', 'Favoritos', 'Dúvidas comuns', 'Configurações', 'Histórico'].map((item, index) => (
           <TouchableOpacity key={index} style={styles.menuItem}>
             <Text style={styles.menuText}>{item}</Text>
           </TouchableOpacity>

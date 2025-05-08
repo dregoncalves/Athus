@@ -10,7 +10,7 @@ export default function VerificacaoEmailScreen() {
 
   const handleVerificar = () => {
     if (codigo === codigoCorreto) {
-      router.push('/cadastro');
+      router.push('/perfil');
     } else {
       Alert.alert('Código incorreto!');
     }

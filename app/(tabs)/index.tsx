@@ -5,7 +5,7 @@ export default function Home() {
   const router = useRouter();
 
   const handlePress = () => {
-    router.push('/email'); // Ou '/cadastro' se quiser ir direto
+    router.push('/cadastro'); 
 
   };
 

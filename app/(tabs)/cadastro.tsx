@@ -10,17 +10,17 @@ export default function CadastroScreen() {
   const router = useRouter();
 
   const handleVerificar = () => {
-    // Aqui vai a lógica de verificação dos dados
+    
     console.log({ nome, email, senha, repetirSenha });
 
-    router.push('/perfil'); 
+    router.push('/verificacao'); 
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         {/* LOGO */}
-        <Image source={require('../assets/images/icon.png')} style={styles.logo} />
+        <Image source={require('../../assets/images/icon.png')} style={styles.logo} />
         <Text style={styles.headerText}>Informe os dados de cadastro</Text>
       </View>
 
