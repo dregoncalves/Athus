@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 export default function ServicosScreen() {
+  const router = useRouter();
   const servicos = ['Limpeza', 'Jardinagem', 'Hidráulica', 'Elétrica', 'Pintura'];
   const profissionais = ['Vinicius', 'Matheus', 'William', 'Larissa', 'Carla', 'Pedro', 'Joana', 'Rafael'];
 
@@ -10,9 +12,12 @@ export default function ServicosScreen() {
     <View style={styles.container}>
       {/* Header com botão de login */}
       <View style={styles.header}>
-        <Text style={styles.loginText}>LOGIN</Text>
-        <Ionicons name="person-circle-outline" size={28} color="#888" />
-      </View>
+  <TouchableOpacity style={styles.loginButton} onPress={() => router.push('/login')}>
+    <Text style={styles.loginText}>LOGIN</Text>
+    <Ionicons name="person-circle-outline" size={28} color="#888" />
+  </TouchableOpacity>
+</View>
+
 
       {/* Campo de busca */}
       <View style={styles.searchBox}>
@@ -35,15 +40,22 @@ export default function ServicosScreen() {
       <Text style={styles.sectionTitle}>Profissionais mais próximos 👥</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScroll}>
         {profissionais.map((nome, index) => (
-          <View key={index} style={styles.profissional}>
-            <Ionicons name="person-outline" size={24} />
-            <Text style={styles.profissionalNome}>{nome}</Text>
-          </View>
+          index === 0 ? (
+            <TouchableOpacity key={index} style={styles.profissional} onPress={() => router.push('/colaborador')}>
+              <Ionicons name="person-outline" size={24} />
+              <Text style={styles.profissionalNome}>{nome}</Text>
+            </TouchableOpacity>
+          ) : (
+            <View key={index} style={styles.profissional}>
+              <Ionicons name="person-outline" size={24} />
+              <Text style={styles.profissionalNome}>{nome}</Text>
+            </View>
+          )
         ))}
         <Ionicons name="arrow-forward-circle-outline" size={24} style={styles.arrowIcon} />
       </ScrollView>
 
-      {/* Rodapé (opcional) */}
+      {/* Rodapé */}
       <View style={styles.footer}>
         <View style={styles.footerLine} />
         <Ionicons name="triangle-outline" size={28} />
@@ -67,7 +79,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   searchText: { marginRight: 10, fontSize: 18, fontWeight: '500' },
-
   sectionTitle: {
     fontSize: 14,
     fontWeight: 'bold',
@@ -110,4 +121,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#d4af37',
     marginBottom: 10,
   },
+  loginButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  }  
 });
