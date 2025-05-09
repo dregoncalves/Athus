@@ -1,46 +1,36 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+// app/index.tsx
+import { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, ActivityIndicator } from "react-native";
 
-export default function Home() {
+export default function Index() {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
-  const handlePress = () => {
-    router.push('/cadastro'); 
+  useEffect(() => {
+    const checkOnboarding = async () => {
+      const hasSeen = await AsyncStorage.getItem("hasSeenOnboarding");
 
-  };
+      if (hasSeen) {
+        router.replace("/onboarding");
+      } else {
+        router.replace("/onboarding");
+      }
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao AthusApp!</Text>
+      setLoading(false);
+    };
 
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Iniciar Cadastro</Text>
-      </TouchableOpacity>
-    </View>
-  );
+    checkOnboarding();
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  return null;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 30,
-  },
-  button: {
-    backgroundColor: '#d2691e',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-});

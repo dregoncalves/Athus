@@ -1,6 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Switch } from 'react-native';
-import { useRouter } from 'expo-router';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Switch,
+} from "react-native";
+import { useRouter } from "expo-router";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -8,7 +16,10 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/images/icon.png')} style={styles.logo} />
+      <Image
+        source={require("../../assets/images/icon.png")}
+        style={styles.logo}
+      />
 
       <View style={styles.formBox}>
         <Text style={styles.label}>Email</Text>
@@ -34,13 +45,16 @@ export default function LoginScreen() {
           <Text style={styles.link}>Esqueci a senha</Text>
         </View>
 
-        <TouchableOpacity style={styles.loginButton} onPress={() => router.push('/servicos')}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => router.push("/servicos")}
+        >
           <Text style={styles.loginButtonText}>Logar</Text>
         </TouchableOpacity>
 
         <Text style={styles.registerText}>
-          Não tem conta?{' '}
-          <Text style={styles.link} onPress={() => router.push('/cadastro')}>
+          Não tem conta?{" "}
+          <Text style={styles.link} onPress={() => router.push("/cadastro")}>
             Crie uma!
           </Text>
         </Text>
@@ -50,10 +64,16 @@ export default function LoginScreen() {
         <View style={styles.socialContainer}>
           {/* Substituir pelos ícones reais quando tiver */}
           <TouchableOpacity>
-            <Image source={require('../../assets/images/icon.png')} style={styles.socialIcon} />
+            <Image
+              source={require("../../assets/images/icon.png")}
+              style={styles.socialIcon}
+            />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image source={require('../../assets/images/icon.png')} style={styles.socialIcon} />
+            <Image
+              source={require("../../assets/images/icon.png")}
+              style={styles.socialIcon}
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -62,43 +82,48 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', alignItems: 'center', paddingTop: 60 },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    paddingTop: 60,
+  },
   logo: { width: 60, height: 60, marginBottom: 20 },
   formBox: {
-    backgroundColor: '#eee',
-    width: '90%',
+    backgroundColor: "#eee",
+    width: "90%",
     borderRadius: 20,
     padding: 20,
-    alignItems: 'stretch',
+    alignItems: "stretch",
   },
   label: { fontSize: 14, marginBottom: 4 },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 8,
     padding: 10,
     marginBottom: 15,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
   },
   options: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 15,
-    alignItems: 'center',
+    alignItems: "center",
   },
-  checkboxContainer: { flexDirection: 'row', alignItems: 'center' },
+  checkboxContainer: { flexDirection: "row", alignItems: "center" },
   checkboxLabel: { marginLeft: 8, fontSize: 12 },
-  link: { color: '#d4af37', fontSize: 13 },
+  link: { color: "#d4af37", fontSize: 13 },
   loginButton: {
-    backgroundColor: '#d4af37',
+    backgroundColor: "#d4af37",
     borderRadius: 10,
     paddingVertical: 10,
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 10,
   },
-  loginButtonText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
-  registerText: { textAlign: 'center', fontSize: 13, marginBottom: 10 },
-  or: { textAlign: 'center', fontSize: 13, marginVertical: 10 },
-  socialContainer: { flexDirection: 'row', justifyContent: 'center', gap: 20 },
+  loginButtonText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
+  registerText: { textAlign: "center", fontSize: 13, marginBottom: 10 },
+  or: { textAlign: "center", fontSize: 13, marginVertical: 10 },
+  socialContainer: { flexDirection: "row", justifyContent: "center", gap: 20 },
   socialIcon: { width: 36, height: 36, marginHorizontal: 10 },
 });

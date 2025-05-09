@@ -1,5 +1,17 @@
-import { Slot } from 'expo-router';
+// app/_layout.tsx
+import { Stack } from "expo-router";
+import React from "react";
+import { StatusBar } from "react-native";
 
 export default function RootLayout() {
-  return <Slot />;
+  return (
+    <>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      <Stack screenOptions={{ headerShown: false }} />
+    </>
+  );
 }
